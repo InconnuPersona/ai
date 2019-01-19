@@ -1,0 +1,15 @@
+
+entities:
+ views
+ world
+ 
+objects:
+ rules
+ 
+samples:
+ populations
+ 
+
+ delayed(1000) function monthly_tick() {
+ }
+ 

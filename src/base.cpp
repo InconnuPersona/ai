@@ -3,7 +3,7 @@
 #include <cstring>
 
 #ifdef _WIN32
- 
+ #include <Windows.h>
 #else
  #include <fcntl.h>
 #endif
@@ -183,53 +183,6 @@ string_t& line_s::operator[](size_t i) {
  }
  
  return args[i];
-}
-
-tag_s::tag_s() {
- memset(chars, 0, sizeof(chars));
-}
-
-tag_s::tag_s(int value) {
- memcpy(chars, &value, sizeof(chars));
- 
- if (chars[3]) {
-  ERROR("invalid tag.");
- }
-}
-
-tag_s::tag_s(cstring_r tag) {
- if (tag.length() > 3) {
-  ERROR("invalid tag [%s].", tag.c_str());
- }
- 
- chars[0] = tag[0];
- chars[1] = tag[1];
- chars[2] = tag[2];
- chars[3] = 0;
-}
-
-tag_s::tag_s(const tag_s& tag) {
- memcpy(chars, tag.chars, sizeof(chars));
-}
-
-bool tag_s::operator==(tag_s& tag) {
- return memcmp(chars, tag.chars, sizeof(chars)) == 0;
-}
-
-bool tag_s::operator!=(tag_s& tag) {
- return memcmp(chars, tag.chars, sizeof(chars)) != 0;
-}
-
-tag_s::operator const char*() {
- return (const char*) chars;
-}
-
-tag_s::operator int() {
- return 0 + (chars[0] << 24) + (chars[1] << 16) + (chars[2] << 8);
-}
-
-tag_s::operator string_t() {
- return (char*) chars;
 }
 
 void vers_s::print() {

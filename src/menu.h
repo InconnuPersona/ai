@@ -11,23 +11,35 @@ struct vertex_s {
 };
 
 struct menu_i {
+ static int count = 0;
+ 
  string_t name;
+ 
+ menu_i(string_t name);
  
  virtual void init();
  virtual void close();
- virtual void font_stash_begin();
+ virtual void font_stash_begin(nk_font_atlas** atlas);
  virtual void font_stash_end();
- virtual void render();
+ virtual void render(bool antialias);
+ 
+ void click();
+ void drag();
+ void scroll();
 };
 
 struct menu_s {
  vector_t<menu_i*> options;
  
- nk_context* context;
+ menu_i* iface;
+ 
+ nk_context context;
  nk_buffer cmds;
  nk_font_atlas atlas;
  
  nk_draw_null_texture null;
+ 
+ // font_texture
 };
 
 extern menu_s menu;

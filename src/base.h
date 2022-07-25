@@ -11,6 +11,7 @@
 
 #define PROJ_NAME "annexatio imperii"
 #define ERROR(...) { printf("%s: ", __FUNCTION__); printf(__VA_ARGS__); printf("\n"); exit(1); }
+#define NOID 0
 
 struct aabb_s {
  vec2 min, max;
@@ -38,8 +39,19 @@ struct date_s {
 struct comp_s {
  typedef int id_t;
  
- int id;
+ id_t id;
  
+};
+
+// Entity
+struct ent_s {
+ typedef int id_t;
+ 
+ 
+ id_t id;
+ 
+ // The population/government class.
+ int rank;
 };
 
 // A system is merely a component in charge of other components.
@@ -68,25 +80,6 @@ struct line_s {
  static line_s split(cstring_r text, cstring_r delim);
  
  string_t& operator[](size_t i);
-};
-
-// Tags are specifically applied to 
-struct tag_s {
-private:
- byte_t chars[4];
- 
-public:
- tag_s();
- tag_s(int value);
- tag_s(cstring_r tag);
- tag_s(const tag_s& tag);
- 
- operator const char*();
- operator int(); // Will always return in network order.
- operator string_t();
- 
- bool operator==(tag_s& tag);
- bool operator!=(tag_s& tag);
 };
 
 struct vers_s {

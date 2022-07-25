@@ -1,0 +1,92 @@
+
+# Specify the map dimensions
+#       width height
+map_dim 2560 1280
+
+# coins are a special type of good, in that their value is often pegged to another good.
+# later technology allows different options, but oftentimes, a currency is either pegged
+# in units of another good or coin.
+
+#    class_name value originnode originyear
+#good coin_florin 10 -1 # Coin of Florence
+#good coin_ducat 10 -1 # Coin of Venice
+#good coin_solidus 10 -1 # coin of the Byzantine Empire
+#good coin_thaler 10 -1 1515 # Coin of the Holy Roman Empire
+#good coin_mark # Deutschmark
+#good coin_penny # currency with German and British variants
+#good coin_dinero # Spanish and Portuguese
+#good coin_dirham
+
+#    id r g b
+node 1 197 23 23
+node 2 142 86 22
+node 3 79 85 29
+node 4 178 197 23
+node 5 141 158 4
+node 6 96 100 58
+node 7 99 144 83
+node 8 64 144 36
+node 9 53 180 7
+node 10 54 202 0
+node 11 134 212 162
+node 12 97 126 86 # mountains
+node 13 75 172 38
+node 14 77 111 64
+node 15 153 90 142
+node 16 110 35 96
+node 17 163 99 205
+node 18 179 230 161
+node 19 144 60 141
+node 20 240 16 230
+#node 21
+#node 22
+#node 23
+#node 24
+#node 25
+#node 26
+#node 27
+#node 28
+#node 29
+
+
+node 3000 0 65 103
+node 3001 5 103 160
+node 3002 113 173 208
+node 3003 42 161 230
+node 3004 7 57 105
+node 3005 58 94 128
+node 3006 71 98 98
+node 3007 36 142 142
+node 3008 0 247 198
+
+#     buildingtype node settings ...
+#build mint coin_ducat 1 1 # 1 unit of ducats minted a day
+#build mint coin_florin 2 1 # 1 unit of florins minted a day
+#build road
+
+
+# Most links are automatically generated
+#    type n0 n1
+#link land 1 2
+#link land 2 3
+#link land 4 1
+#link land 5 2
+
+# clears the pops of a node or city if specified
+#       node [city]
+#clr_pop 
+
+# add a specified pop
+#pop
+
+
+#   id color
+tag GAL 0x0080ff
+
+#        node owner
+node_own 1 GAL
+
+#map_heightmap res/height.png
+map_terrain res/terrain.png
+map_nodes res/nodes.png
+

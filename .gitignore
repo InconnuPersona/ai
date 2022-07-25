@@ -52,6 +52,10 @@ Mkfile.old
 dkms.conf
 
 # Visual Studio Items
+.settings
 .vs
-x64
+*/Debug
+*/x64
 *.user
+.metadata
+*.db

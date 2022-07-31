@@ -1,6 +1,8 @@
 #pragma once
 
-
+struct draw_i {
+ 
+};
 
 
 #if defined(USE_SDL2)

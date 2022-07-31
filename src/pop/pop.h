@@ -3,7 +3,7 @@
 #include "good.h"
 
 // A population specification.
-struct pop_spc_s : public comp_s {
+struct pop_spec_s : public comp_s {
  int spec; // species
  int subs; // subspecies
 };

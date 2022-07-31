@@ -3,7 +3,7 @@
 #include <cstring>
 
 #ifdef _WIN32
- #include <Windows.h>
+ 
 #else
  #include <fcntl.h>
 #endif

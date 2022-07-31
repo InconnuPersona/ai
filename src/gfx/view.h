@@ -4,8 +4,8 @@ struct view_i {
  
  
  
- // x is width, y is height, and z is depth buffer (if applicable)
- vec3 size();
+ // x is width, y is height
+ virtual vec2 size();
 };
 
 extern view_i* view;

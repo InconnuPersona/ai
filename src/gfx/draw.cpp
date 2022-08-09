@@ -1,7 +1,4 @@
-#include "draw_fnc.h"
-
-SDL_Window* window;
-SDL_Renderer* render;
+#include "draw.h"
 
 /*void draw_map() {
  SDL_Rect src, dst;
@@ -78,7 +75,7 @@ void draw_menu() {
  }
  
  
-}*/
+}
 
 void draw_init() {
  int w, h;
@@ -118,4 +115,4 @@ void draw() {
  //draw_menu();
  
  SDL_RenderPresent(render);
-}
+}*/

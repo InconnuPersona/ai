@@ -54,8 +54,8 @@ dkms.conf
 # Visual Studio Items
 .settings
 .vs
-*/Debug
-*/x64
+*Debug
+*x64
 *.user
 .metadata
 *.db

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "view.h"
+
 struct draw_i {
  
 };

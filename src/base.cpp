@@ -22,7 +22,7 @@ arg_s::arg_s(const char* n_text) {
  set(n_text);
 }
 
-void arg_s::set(cstring_r n_text) {
+void arg_s::set(cstring_t& n_text) {
  text = n_text;
  last = 0;
 }
@@ -76,7 +76,7 @@ date_s::operator string_t() {
  return stream.str();
 }
 
-bool line_s::next(cstring_r text, int* index) {
+bool line_s::next(cstring_t& text, int* index) {
  int i;
  int prev;
  
@@ -158,7 +158,7 @@ int line_s::size() {
  return (int) args.size();
 }
 
-line_s line_s::split(cstring_r text, cstring_r delim) {
+line_s line_s::split(cstring_t& text, cstring_t& delim) {
  line_s line;
  char* token;
  
@@ -193,7 +193,7 @@ void set_nonblock(int file) {
 #ifdef _WIN32
  int noblock = 1;
  
- ioctl(file, FIONBIO, &noblock);
+ //ioctl(file, FIONBIO, &noblock);
 #else
  int flags;
  

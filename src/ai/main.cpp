@@ -1,19 +1,21 @@
-#include "draw.h"
+#include "gfx/gui.h"
 #include "main.h"
 
 #include <sys/poll.h>
+
+#ifndef STDIN_FILENO
+ #define STDIN_FILENO _fileno(stdin)
+#endif
 
 #define STDIN_PROMPT "> "
 
 // For right now, implement everything by hand.
 
 date_s date = { 1, 1, 1 };
-map_s map;
-tag_s tag_self = tag_s("GAL"); // Default tag for now.
-view_s view;
+//map_s map;
 int game_speed = 2000;
 vers_s version;
-host_s host;
+//host_s host;
 
 bool use_console = false;
 bool use_gui = true;
@@ -93,7 +95,7 @@ int main(int argc, char** argv) {
  //=====================================================
  
  if (use_gui) {
-  init_gui();
+  init_gui(new gui_sdl2_render());
  }
  
  // Load core game data.
@@ -120,7 +122,7 @@ int main(int argc, char** argv) {
  int time, last;
  int lost;
  
- last = SDL_GetTicks();
+ last = get_time();
  
  while (true) {
   time = SDL_GetTicks();

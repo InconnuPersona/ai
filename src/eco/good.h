@@ -2,7 +2,27 @@
 
 #include "base.h"
 
-enum good_e {
+namespace eco {
+
+	struct good_s : comp_s {
+
+	};
+
+	struct item_s {
+		good_s::id_t good;
+		float count;
+
+	};
+
+	struct pile_s {
+		vector_t<item_s> items;
+
+
+	};
+}
+
+
+/*enum good_e {
  GOOD_UNKNOWN = 0,
  GOOD_COIN,
  GOOD_FOOD,
@@ -60,4 +80,4 @@ struct market_s : public comp_s {
  void close();
  void reopen();
  
-};
+};*/

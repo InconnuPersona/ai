@@ -1,18 +1,59 @@
 #pragma once
 
-#include "eco.h"
+#include "node.h"
+#include "image.h"
+
+namespace map {
+
+	struct backmap_s {
+		int w, h;
+
+		image_s terrain;
+		image_s height;
+
+		void gen();
+	};
+
+	// A nodemap can be scoped to a specific node.
+	struct nodemap_s {
+		image_s nodemap;
+
+		vector_t<link_s> links;
+		
+		tuplemap_t<aabb_s, node_s::id_t> node_bbs;
+		
+		multimap_t<node_s::id_t, node_s::id_t> node_held;
+
+	};
+
+	struct map_s {
+
+		// Modelview matrix.
+		mat4 model;
+
+		//vector_t<good_s> goods;
+		//vector_t<owner_s> owners;
+
+		vector_t<node_s> nodes;
+
+		//vec2 to_view(vec2 pos);
+		//vec2 to_view(float x, float y);
+
+		// Load game files.
+		void init();
+
+		// Load save file.
+		void load(cstring_t& path);
+	};
+
+	extern map_s map;
+	extern backmap_s back;
+	extern nodemap_s nodes;
+}
 
 // The root node is 0.
-struct nodemap_s {
+/*struct nodemap_s {
  
- 
- vector_t<link_s> links;
- 
- tuplemap_t<aabb_s, node_s::id_t> node_bbs;
- 
- vector_t<node_s> nodes;
- 
- multimap_t<node_s::id_t, node_s::id_t> node_held;
  
  int* tiles;
  int w, h;
@@ -50,6 +91,8 @@ struct map_s {
  vector_t<good_s> goods;
  //vector_t<owner_s> owners;
  
+ vector_t<node_s> nodes;
+ 
  texture_t nodemap;
  texture_t terrain;
  
@@ -75,7 +118,4 @@ struct map_s {
  
  // Load save file.
  void load(string_t path);
-};
-
-extern map_s map;
-extern nodemap_s nodes;
+};*/

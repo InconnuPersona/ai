@@ -36,7 +36,7 @@ using vector_t = std::vector<T>;
 typedef unsigned char byte_t;
 typedef long long long_t;
 typedef std::string string_t;
-typedef const string_t& cstring_r;
+typedef const string_t cstring_t;
 
 typedef SDL_Surface* surface_t;
 typedef SDL_Texture* texture_t;

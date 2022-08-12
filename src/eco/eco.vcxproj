@@ -19,11 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dec.h" />
     <ClInclude Include="eco.h" />
     <ClInclude Include="good.h" />
+    <ClInclude Include="idea.h" />
     <ClInclude Include="org.h" />
     <ClInclude Include="pop.h" />
-    <ClInclude Include="rand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="good.cpp" />

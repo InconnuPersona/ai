@@ -1,6 +1,8 @@
-#game{
-	width: 640px;
-	height: 480px;
+canvas {
 	border: 1px solid black;
 	margin: auto;
+}
+
+video {
+	display: none;
 }

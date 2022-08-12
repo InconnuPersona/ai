@@ -1,6 +1,6 @@
 #include "main.h"
 
-void proc_args(int argc, char** argv) {
+/*void proc_args(int argc, char** argv) {
  arg_s arg;
  string_t s;
  int i;
@@ -23,8 +23,8 @@ void proc_args(int argc, char** argv) {
   if (s == "console") {
    use_console = true;
   }
-  elif (s == "tag") {
-   // Select tag.
+  elif (s == "web_host") {
+   use_http = true;
   }
   elif (s == "nogui") {
    use_gui = false;
@@ -140,4 +140,4 @@ void exec_file(FILE* file) {
   delete[] text;
   
   fseek(file, 0, SEEK_SET);
-}
+}*/

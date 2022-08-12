@@ -30,17 +30,4 @@ namespace eco {
  
 
 	};
-
-	struct pop_stat_s {
-		//int killed;
-		int born;
-		int died;
-
-		int unrest;
-
-		int labor;
-
-		int births;
-		int growth;
-	};
 }

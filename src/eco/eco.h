@@ -2,12 +2,26 @@
 
 //#include "map/node.h"
 
-#include "pop.h"
+#include "good.h"
+#include "idea.h"
 
 // taxes gov idea is established once 
 
 namespace eco {
 	struct pop_s;
+
+	struct pop_stat_s {
+		//int killed;
+		int born;
+		int died;
+
+		int unrest;
+
+		int labor;
+
+		int births;
+		int growth;
+	};
 
 	struct eco_s : comp_s {
 		pile_s stock;
@@ -22,6 +36,7 @@ namespace eco {
 		//vector_t<hold_s::id_t> holds;
 		//vector_t<pop_s> pops;
 
+		//vector_t<dec_s> current_decisions;
 	};
 
 	/*struct eco_ai {

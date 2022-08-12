@@ -1,0 +1,2 @@
+
+start "" "game/index.html"

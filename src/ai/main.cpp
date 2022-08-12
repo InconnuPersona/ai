@@ -1,7 +1,7 @@
 #include "gfx/gui.h"
 #include "main.h"
 
-#include <sys/poll.h>
+/*#include <sys/poll.h>
 
 #ifndef STDIN_FILENO
  #define STDIN_FILENO _fileno(stdin)
@@ -13,12 +13,13 @@
 
 date_s date = { 1, 1, 1 };
 //map_s map;
-int game_speed = 2000;
+int game_speed = 2000;*/
 vers_s version;
 //host_s host;
 
 bool use_console = false;
 bool use_gui = true;
+bool use_http = false;
 
 void quit() {
  fflush(stdout);
@@ -26,7 +27,7 @@ void quit() {
  exit(0);
 }
 
-void read_stdin() {
+/*void read_stdin() {
  pollfd fds;
  size_t size;
  char* text;
@@ -66,14 +67,16 @@ void read_stdin() {
  }
  
  fflush(stdout);
-}
+}*/
+
+#undef main
 
 int main(int argc, char** argv) {
  string_t build;
  
- if (atexit(quit)) {
-  ERROR("unable to register exit function.");
- }
+ //if (atexit(quit)) {
+ // ERROR("unable to register exit function.");
+ //}
  
  //=====================================================
  
@@ -90,7 +93,7 @@ int main(int argc, char** argv) {
  version.print();
  printf("executable compiled on " __DATE__ " " __TIME__ ".\n");
  
- proc_args(argc, argv);
+ /*proc_args(argc, argv);
  
  //=====================================================
  
@@ -162,6 +165,6 @@ int main(int argc, char** argv) {
   }
   
   SDL_Delay(1000 / 30);
- }
+ }*/
  
 }

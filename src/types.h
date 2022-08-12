@@ -48,6 +48,9 @@ struct tuple_s {
 };
 
 template <typename T1, typename T2>
+using map_t = std::map<T1, T2>;
+
+template <typename T1, typename T2>
 using tuplemap_t = vector_t<tuple_s<T1, T2>>;
 
 template <typename T1, typename T2>

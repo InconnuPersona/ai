@@ -5,8 +5,7 @@
 
 extern bool use_console;
 extern bool use_gui;
-
-void input(int time);
+extern bool use_http;
 
 void proc_args(int argc, char** argv);
 void proc_cmds(const char* text);

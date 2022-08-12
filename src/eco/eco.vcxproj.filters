@@ -27,7 +27,10 @@
     <ClInclude Include="pop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rand.h">
+    <ClInclude Include="idea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

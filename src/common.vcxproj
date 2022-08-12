@@ -25,7 +25,9 @@
   <ItemGroup>
     <ClInclude Include="base.h" />
     <ClInclude Include="hold.h" />
+    <ClInclude Include="http.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="net.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="stb_image_write.h" />
     <ClInclude Include="thread.h" />

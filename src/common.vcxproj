@@ -21,15 +21,17 @@
   <ItemGroup>
     <ClCompile Include="base.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="json.cpp" />
+    <ClCompile Include="thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base.h" />
     <ClInclude Include="hold.h" />
     <ClInclude Include="http.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="jsmn.h" />
+    <ClInclude Include="log.h" />
     <ClInclude Include="net.h" />
-    <ClInclude Include="stb_image.h" />
-    <ClInclude Include="stb_image_write.h" />
     <ClInclude Include="thread.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="zip.h" />

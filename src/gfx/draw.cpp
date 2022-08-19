@@ -1,4 +1,4 @@
-#include "draw.h"
+//#include "draw.h"
 
 /*void draw_map() {
  SDL_Rect src, dst;

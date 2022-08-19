@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*void proc_args(int argc, char** argv) {
+void proc_args(int argc, char** argv) {
  arg_s arg;
  string_t s;
  int i;
@@ -140,4 +140,4 @@ void exec_file(FILE* file) {
   delete[] text;
   
   fseek(file, 0, SEEK_SET);
-}*/
+}

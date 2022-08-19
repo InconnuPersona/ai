@@ -2,6 +2,7 @@
 
 #include "map/map.h"
 #include "net.h"
+#include "thread.h"
 
 extern bool use_console;
 extern bool use_gui;

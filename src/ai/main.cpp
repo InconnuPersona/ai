@@ -73,10 +73,11 @@ void quit() {
 
 int main(int argc, char** argv) {
  string_t build;
+ watch_s watch;
  
- //if (atexit(quit)) {
- // ERROR("unable to register exit function.");
- //}
+ if (atexit(quit)) {
+  ERROR("unable to register exit function.");
+ }
  
  //=====================================================
  
@@ -93,12 +94,12 @@ int main(int argc, char** argv) {
  version.print();
  printf("executable compiled on " __DATE__ " " __TIME__ ".\n");
  
- /*proc_args(argc, argv);
+ proc_args(argc, argv);
  
  //=====================================================
  
  if (use_gui) {
-  init_gui(new gui_sdl2_render());
+  gfx::init_gui("sdl2render", { 640, 480, 60 });
  }
  
  // Load core game data.
@@ -111,60 +112,61 @@ int main(int argc, char** argv) {
  
  //model = glm::translate(model, vec3(view.off.x, view.off.y, 1));
  
- if (use_console) {
-  set_nonblock(STDIN_FILENO);
-  
-  printf("console enabled.\n");
-  printf(STDIN_PROMPT);
-  
-  fflush(stdout);
- }
+ //if (use_console) {
+ // set_nonblock(STDIN_FILENO);
+ // 
+ // printf("console enabled.\n");
+ // printf(STDIN_PROMPT);
+ // 
+ // fflush(stdout);
+ //}
  
  //=====================================================
  
- int time, last;
- int lost;
- 
- last = get_time();
- 
+ double last;
+
+ watch.sync();
+
  while (true) {
-  time = SDL_GetTicks();
+  //if (use_console) {
+  // read_stdin();
+  //}
   
-  if (use_console) {
-   read_stdin();
+  if (use_gui && gfx::gui) {
+   gfx::gui->input(watch.time());
   }
   
-  if (use_gui) {
-   // Might be a good idea to get the time before processing input.
-   input(time);
-  }
-  
-  if (!game_speed) {
+  /*if (!game_speed) {
    last = time;
   }
   else if (game_speed < 0) {
    ERROR("negative game speed reached.");
   }
   
-  lost = (time - last) / game_speed;
-  
+  lost = watch.elapsed() / game_speed;
+
   // Tick game.
   while (lost) {
    //if (clients are behind by a day, wait.)
    // printf("waiting for clients to sync.\n");
    //map.tick_day();
    
-   last += game_speed;
+   watch
+
+   watch += game_speed;
    lost--;
-  }
+  }*/
   
   // -------------------------------------------------------
   
-  if (use_gui) {
-   draw();
+  if (use_gui && gfx::gui) {
+   //map->render();
+   gfx::gui->render(true);
+
+   //gfx::draw->render();
   }
   
-  SDL_Delay(1000 / 30);
- }*/
+  thread_s::sleep(1.0 / 30);
+ }
  
 }

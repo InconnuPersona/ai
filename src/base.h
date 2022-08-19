@@ -8,6 +8,7 @@
 #include <string>
 
 #define elif else if
+#define IN_NAMESPACE(Namespace) using namespace Namespace
 
 #define PROJ_NAME "annexatio imperii"
 #define ERROR(...) { printf("%s: ", __FUNCTION__); printf(__VA_ARGS__); printf("\n"); exit(1); }
@@ -81,6 +82,7 @@ struct line_s {
 struct vers_s {
  int major;
  int minor;
+ //int patch;
  int build;
  
  void print();

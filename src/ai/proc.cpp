@@ -52,7 +52,7 @@ void proc_args(int argc, char** argv) {
  //printf("is_host %i\n", is_host);
 }
 
-void proc_cmds(const char* text) {
+/*void proc_cmds(const char* text) {
  line_s line;
  arg_s arg;
  int i, j;

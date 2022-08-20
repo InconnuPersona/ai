@@ -1,5 +1,12 @@
 #include "node.h"
 
+using namespace map;
+
+node_s::node_s(node_e level) : level(level) {
+
+}
+
+
 /*struct node_base_s {
  
 };

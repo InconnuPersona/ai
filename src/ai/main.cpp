@@ -9,11 +9,10 @@
 
 #define STDIN_PROMPT "> "
 
-// For right now, implement everything by hand.
+// For right now, implement everything by hand.*/
 
-date_s date = { 1, 1, 1 };
-//map_s map;
-int game_speed = 2000;*/
+map::map_s world;
+//int game_speed = 2000;
 vers_s version;
 //host_s host;
 

@@ -116,7 +116,7 @@ int main(int argc, char** argv) {
 
 	srand(time(NULL));
 
-	gen_map(128, 128, 4, 10);
+	gen_map(128, 128, rand() % 9 + 1, rand() % 20 + 10);
 
 	WRITE("height.png", height);
 	WRITE("terrain.png", terrain);

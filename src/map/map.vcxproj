@@ -19,22 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="idea.h" />
+    <ClInclude Include="delaunator.hpp" />
     <ClInclude Include="land.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="prov.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="land.cpp" />
     <ClCompile Include="map.cpp" />
-    <ClCompile Include="map_gen.cpp" />
-    <ClCompile Include="map_load.cpp" />
     <ClCompile Include="node.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\common.vcxproj">
-      <Project>{20412191-44c9-4c80-b7c6-fc3177c98fc7}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\eco\eco.vcxproj">
       <Project>{2dc92e30-ad05-48d6-82e0-fd46cdd80272}</Project>
     </ProjectReference>

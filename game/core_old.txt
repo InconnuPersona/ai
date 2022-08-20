@@ -1,0 +1,49 @@
+
+# core game definitions
+
+
+
+# coin are tradeable goods entirely for the purpose of purchasing power, 
+# foods are necessary products, without which population units can not survive
+# luxury goods are not critical, but are purchased when there is a surplus 
+# material goods are used in manufacturing and crafting
+# metals are the essential materials which currencies may even be pegged to
+# work goods are any product that provides a labor value, including humans
+
+# The "value" of a good is its worth in labor units
+
+#    class_name startvalue
+#good food_fish 3 -1
+#good food_fruit 2
+#good food_grain 1
+#good food_meat 3
+#good food_salt 1.5
+
+#good lux_china
+#good lux_silk
+#good lux_coffee
+#good lux_spice
+#good lux_tea
+#good lux_tobacco
+#good lux_fur
+#good lux_ivory
+#good lux_alchohol
+
+#good mat_cotton 
+#good mat_lumber
+#good mat_wool
+#good mat_sulfur
+
+#good metal_silver 
+#good metal_gold
+#good metal_iron
+#good metal_soft # aluminum and copper
+
+#good work_slaves 10
+
+# population classes
+#pop_rule 
+
+#
+#building road link
+

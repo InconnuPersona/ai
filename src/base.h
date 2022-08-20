@@ -7,6 +7,13 @@
 #include <sstream>
 #include <string>
 
+#define ID_TYPE(Type) typedef Type id_t
+#define HAS_ID(Type) \
+	ID_TYPE(Type); \
+	id_t id
+
+#define FLAG_BIT(Bit) 1 << Bit
+
 #define elif else if
 #define IN_NAMESPACE(Namespace) using namespace Namespace
 
@@ -28,9 +35,9 @@ struct color_s {
 };
 
 struct date_s {
- int year;
- short month;
- short day;
+ int cycle;
+ short lune;
+ short diem;
  
  date_s operator++(int);
  
@@ -39,18 +46,14 @@ struct date_s {
 
 // Component/gameobj_s
 struct comp_s {
- typedef int id_t;
+ typedef short id_t;
  
  id_t id;
  
 };
 
 // Entity
-struct ent_s {
- typedef int id_t;
- 
- 
- id_t id;
+struct ent_s : comp_s {
  
  // The population/government class.
  int rank;

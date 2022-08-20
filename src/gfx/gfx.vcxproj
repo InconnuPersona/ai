@@ -29,6 +29,7 @@
     <ClInclude Include="gui.h" />
     <ClInclude Include="gui_d3d9.h" />
     <ClInclude Include="gui_sdl2_render.h" />
+    <ClInclude Include="mesh.h" />
     <ClInclude Include="node_editor.h" />
     <ClInclude Include="nuklear.h" />
     <ClInclude Include="nuklear_main.h" />

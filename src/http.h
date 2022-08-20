@@ -16,7 +16,7 @@ namespace net {
 	};
 	
 	enum http_version_e {
-		HTTP_0_9 = 9;
+		HTTP_0_9 = 9,
 		HTTP_1_0 = 10,
 		HTTP_1_1 = 11,
 		HTTP_2_0 = 20
@@ -58,5 +58,7 @@ namespace net {
 		http_status_e status;
 	};
 	
-	
+	struct http_server_s : server_s {
+
+	};
 }

@@ -1,15 +1,39 @@
 #pragma once
 
-#include "base.h"
+#include "action.h"
 
 namespace eco {
 
-	struct idea_s : comp_s {
+	struct idea_axis_i {
+		HAS_ID(int);
+
+		// Whether ideas on the axis will split a pop into separate
+		bool cardinal;
+	};
+	
+	struct idea_i {
+		HAS_ID(int);
+
+		idea_axis_i::id_t axis;
+
 		struct effect_s {
-			idea_s::id_t idea;
+			id_t idea;
 			float value;
 		};
 
+	};
+
+	struct idea_axis_align_s {
+		idea_axis_i::id_t axis;
+		idea_i::id_t idea;
+
+		long_t count;
+	};
+
+	struct idea_s {
+		idea_i::id_t type;
+
+		
 	};
 
 

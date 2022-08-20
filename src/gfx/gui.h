@@ -22,11 +22,15 @@ namespace gfx {
 	};
 
 	struct gui_i : public nk_context {
+		static const nk_draw_vertex_layout_element vertex_layout[];
+
 		gui_e type;
 
 		vector_t<view_mode_s> view_modes;
 
 		nk_buffer commands;
+		nk_convert_config config;
+		nk_font_atlas font_atlas;
 
 		nk_draw_null_texture null_texture;
 

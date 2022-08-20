@@ -19,14 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dec.h" />
+    <ClInclude Include="action.h" />
     <ClInclude Include="eco.h" />
     <ClInclude Include="good.h" />
+    <ClInclude Include="hold.h" />
     <ClInclude Include="idea.h" />
     <ClInclude Include="org.h" />
     <ClInclude Include="pop.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="eco.cpp" />
     <ClCompile Include="good.cpp" />
     <ClCompile Include="gov_ai.cpp" />
     <ClCompile Include="pop_ai.cpp" />

@@ -1,0 +1,4 @@
+name = human
+
+
+max_nursing = 0.5

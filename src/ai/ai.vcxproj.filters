@@ -26,5 +26,14 @@
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="governments.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="actions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ideas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

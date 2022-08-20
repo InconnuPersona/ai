@@ -8,6 +8,10 @@ namespace eco {
 
 	};
 
+	struct good_mng_s {
+
+	};
+
 	struct item_s {
 		good_s::id_t good;
 		float count;

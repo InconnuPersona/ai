@@ -1,6 +1,6 @@
 #pragma once
 
-#include "node.h"
+#include "eco/node.h"
 //#include "eco/org.h"
 
 namespace map {
@@ -13,6 +13,7 @@ namespace map {
 
 	// Province node
 	struct prov_s : public node_s {
+		eco::eco_s::id_t eco;
 
 		//org_s::id_t owner;
 		//org_s::id_t holder;

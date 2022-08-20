@@ -1,5 +1,6 @@
 #pragma once
 
+#include "http.h"
 #include "map/map.h"
 #include "net.h"
 #include "thread.h"

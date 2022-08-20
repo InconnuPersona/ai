@@ -53,16 +53,16 @@ string_t arg_s::til_next(char c) {
 }
 
 date_s date_s::operator++(int) {
- day++;
+ diem++;
  
- if (day > 30) {
-  day -= 30;
-  month++;
+ if (diem > 30) {
+  diem -= 30;
+  lune++;
  }
  
- if (month > 12) {
-  month -= 12;
-  year++;
+ if (lune > 12) {
+  lune -= 12;
+  cycle++;
  }
  
  return *this;
@@ -71,7 +71,7 @@ date_s date_s::operator++(int) {
 date_s::operator string_t() {
  std::stringstream stream;
  
- stream << "cycle " << year << " lune " << month << " day " << day;
+ stream << "cycle " << cycle << " lune " << lune << " diem " << diem;
  
  return stream.str();
 }

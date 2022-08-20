@@ -30,7 +30,10 @@
     <ClInclude Include="idea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dec.h">
+    <ClInclude Include="action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="hold.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pop_ai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="eco.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

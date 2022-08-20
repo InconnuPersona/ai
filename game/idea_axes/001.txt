@@ -1,0 +1,41 @@
+
+faith = {
+ cardinal = true
+}
+
+# Builtin
+ethnic = {
+ cardinal = true
+}
+
+# Builtin
+class = {
+ cardinal = true
+}
+
+# ideas on an axis are referred to as axis.idea
+role = {
+ cardinal = true
+ 
+ 
+ ideas = {
+  destitute = {
+   max_class = 0 # absolutely no weight except an automatic vote on rebellions
+  }
+  
+  thief = {
+   max_class = 1 # Crime companies
+  }
+  
+  
+  farmer = {
+   max_class = 1
+  }
+  
+  noble = {
+   max_class = 3
+  }
+  
+ }
+ 
+}

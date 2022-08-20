@@ -5,7 +5,7 @@
 #include "nuklear.h"
 
 namespace gfx {
-
+	
 	enum gui_e {
 		GUI_SDL2_RENDER = 0,
 		GUI_SDL2_OPENGL,
@@ -21,34 +21,57 @@ namespace gfx {
 		color_s color;
 	};
 
-	struct gui_i : public nk_context {
-		static const nk_draw_vertex_layout_element vertex_layout[];
+	struct gui_font_s {
+		struct nk_font_atlas* atlas;
+		struct nk_font* handle;
+		float size;
 
+		gui_font_s(float size);
+	};
+
+	struct gui_i : public nk_context {
+		const float default_font_size = 12.f;
+		
+		static const nk_draw_vertex_layout_element vertex_layout[];
+		
 		gui_e type;
 
 		vector_t<view_mode_s> view_modes;
 
 		nk_buffer commands;
 		nk_convert_config config;
-		nk_font_atlas font_atlas;
+		float font_scale;
 
 		nk_draw_null_texture null_texture;
+		
+		gui_font_s* default_font;
 
+		view_sdl2* view;
+		draw_sdl2* draw;
+		
 		gui_i(gui_e type);
 
 		virtual void init(view_mode_s& mode) = 0;
-		virtual void close();
-		virtual void font_stash();
-		virtual void render(bool antialias);
+		virtual void close() = 0;
+		virtual void render(bool antialias) = 0;
 
-		virtual void input(double time);
+		virtual gui_font_s* load_font(cstring_t& path, float size, struct nk_font_config& config);
+
+		void set_font(gui_font_s* font);
+
+		//virtual void input(double time);
 
 		//void click();
 		//void drag();
 		//void scroll();
+
+	protected:
+		void finish(view_i* view, draw_i* draw);
+
+		virtual void font_stash_begin(gui_font_s* font);
+		virtual void font_stash_end(gui_font_s* font) = 0;
 	};
 
-	extern vector_t<gui_i*> gui_ifaces;
 	extern gui_i* gui;
 
 	void init_gui(cstring_t& iface, view_mode_s mode);
@@ -72,5 +95,4 @@ namespace gfx {
 	#if defined(USE_D3D)
 	 #include "nuklear_d3d9.h"
 	#endif
-
 }

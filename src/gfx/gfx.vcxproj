@@ -23,7 +23,6 @@
     <ClInclude Include="canvas.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="draw_fnc.h" />
-    <ClInclude Include="draw_gl.h" />
     <ClInclude Include="draw_sdl2.h" />
     <ClInclude Include="file_browser.h" />
     <ClInclude Include="gui.h" />

@@ -28,7 +28,7 @@ namespace eco {
 	};
 
 	struct labor_s {
-		pop_s::id_t pop;
+		//pop_s::id_t pop;
 		long_t count;
 	};
 
@@ -42,13 +42,13 @@ namespace eco {
 
 		pop_stat_s stats;
 
-		tuplemap_t<labor_s, hold_s::id_t> assigned_labor;
+		//tuplemap_t<labor_s, hold_s::id_t> assigned_labor;
 
 		//tuplemap_t < pop_s, node_s::id_t>
 
 		// idea
 
-		tuplemap_t<pop_s::id_t, idea_axis_align_s> pop_aligns;
+		//tuplemap_t<pop_s::id_t, idea_axis_align_s> pop_aligns;
 
 		// Classes are determined at the eco level,
 		// And determine both the voting power and

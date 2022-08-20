@@ -124,6 +124,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -153,6 +154,9 @@
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\gfx\gfx.vcxproj">
+      <Project>{ec666cbc-9c48-436e-8513-c6fb98f0947a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\map\map.vcxproj">
       <Project>{0fc3ae8d-e676-491b-96b6-8e1e35b14d03}</Project>
     </ProjectReference>

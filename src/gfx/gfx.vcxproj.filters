@@ -21,9 +21,6 @@
     <ClInclude Include="draw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="draw_gl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="draw_sdl2.h">
       <Filter>Header Files</Filter>
     </ClInclude>

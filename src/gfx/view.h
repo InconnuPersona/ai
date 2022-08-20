@@ -16,7 +16,7 @@ namespace gfx {
 	struct view_i {
 		vector_t<view_mode_s> view_modes;
 
-		virtual void open(int width, int height, cstring_t& title, int display) = 0;
+		virtual void open(int width, int height, cstring_t& title, bool fullscreen, int display) = 0;
 
 		virtual void close() = 0;
 

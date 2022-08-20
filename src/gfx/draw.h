@@ -7,7 +7,8 @@ namespace gfx {
 	struct draw_i {
 		//int load_texture(image_s& image);
 
-
+		virtual void clear(color_s color) = 0;
+		virtual void present() = 0;
 	};
 
 	extern draw_i* draw;

@@ -104,7 +104,7 @@ node_editor_add(struct node_editor *editor, const char *name, struct nk_rect bou
 {
     static int IDs = 0;
     struct node *node;
-    NK_ASSERT((nk_size)editor->node_count < NK_LEN(editor->node_buf));
+    assert((nk_size)editor->node_count < NK_LEN(editor->node_buf));
     node = &editor->node_buf[editor->node_count++];
     node->ID = IDs++;
     node->value = 0;
@@ -122,7 +122,7 @@ node_editor_link(struct node_editor *editor, int in_id, int in_slot,
     int out_id, int out_slot)
 {
     struct node_link *link;
-    NK_ASSERT((nk_size)editor->link_count < NK_LEN(editor->links));
+    assert((nk_size)editor->link_count < NK_LEN(editor->links));
     link = &editor->links[editor->link_count++];
     link->input_id = in_id;
     link->input_slot = in_slot;

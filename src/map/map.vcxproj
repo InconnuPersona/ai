@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="delaunator.hpp" />
     <ClInclude Include="land.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="node.h" />

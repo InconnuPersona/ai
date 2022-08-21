@@ -24,9 +24,6 @@
     <ClInclude Include="land.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="delaunator.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="node.h">
       <Filter>Header Files</Filter>
     </ClInclude>

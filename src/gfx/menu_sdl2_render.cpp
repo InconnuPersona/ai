@@ -1,30 +1,3 @@
-#include "menu.h"
-
-#if defined(USE_SDL2)
-
-struct menu_sdl2_render : menu_i {
- menu_sdl2_render() : menu_i() {
-  
-  
- }
- 
- void init() override {
-  menu_i::init();
-  
-  SDL_SetHint(SDL_HINT_VIDEO_HIGHDPI_DISABLED, "0");
-  
-  SDL_Init(SDL_INIT_VIDEO);
-  
-  view.open("SDL2");
-  draw.open("SDL2render");
- }
- 
- void close() override {
-  menu_i::close();
-  
-  SDL_Quit();
- }
-};
 
 NK_INTERN void
 nk_sdl_device_upload_atlas(const void *image, int width, int height)

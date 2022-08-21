@@ -45,16 +45,13 @@
     <ClInclude Include="nuklear_main.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
-    <ClInclude Include="gui_d3d9.h">
+    <ClInclude Include="menu_d3d9.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="overview.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="style.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="nuklear.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="gui_sdl2_render.h">

@@ -30,6 +30,9 @@ namespace gfx {
 	};
 
 	struct gui_i : public nk_context {
+		typedef void (*quit_f)(gui_i* gui);
+
+	protected:
 		const float default_font_size = 12.f;
 		
 		static const nk_draw_vertex_layout_element vertex_layout[];
@@ -39,7 +42,6 @@ namespace gfx {
 		vector_t<view_mode_s> view_modes;
 
 		nk_buffer commands;
-		nk_convert_config config;
 		float font_scale;
 
 		nk_draw_null_texture null_texture;
@@ -49,6 +51,7 @@ namespace gfx {
 		view_sdl2* view;
 		draw_sdl2* draw;
 		
+	public:
 		gui_i(gui_e type);
 
 		virtual void init(view_mode_s& mode) = 0;
@@ -59,7 +62,7 @@ namespace gfx {
 
 		void set_font(gui_font_s* font);
 
-		//virtual void input(double time);
+		virtual void poll_input(double time) = 0;
 
 		//void click();
 		//void drag();

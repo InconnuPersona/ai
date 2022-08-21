@@ -2,6 +2,7 @@
 
 struct gui_sdl2_render : public gui_i {
 	SDL_Renderer* renderer;
+	SDL_Window* window;
 
 	map_t<gui_font_s*, SDL_Texture*> fonts;
 
@@ -13,6 +14,8 @@ struct gui_sdl2_render : public gui_i {
 	void init(view_mode_s& mode) override;
 	void close() override;
 	void render(bool antialias) override;
+
+	void poll_input(double time) override;
 
 protected:
 	void font_stash_end(gui_font_s* font) override;
@@ -84,7 +87,7 @@ void gui_sdl2_render::init(view_mode_s& mode) {
 	//log.printf();
 
 	if (SDL_VERSIONNUM(runtime.major, runtime.minor, runtime.patch) < SDL_VERSIONNUM(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL)) {
-		//log.printf("SDL2 runtime version %i.%i.%i is older than the compiled version %i.%i.%i, which may cause issues with rendering.");
+		//log.printf("SDL2 runtime version %i.%i.%i is older than the compiled version, which may cause issues with rendering.");
 	}
 
 	// Preinstantiate interfaces instead.
@@ -95,9 +98,11 @@ void gui_sdl2_render::init(view_mode_s& mode) {
 
 	view->open(mode.w, mode.h, PROJ_NAME);
 
+	window = view->get_handle();
+
 	draw = new draw_sdl2();
 
-	draw->init(view->get_handle());
+	draw->init(window);
 
 	renderer = draw->get_handle();
 
@@ -114,114 +119,97 @@ void gui_sdl2_render::init(view_mode_s& mode) {
 	finish(view, draw);
 }
 
-void nk_sdl_render(nk_context& ctx, nk_buffer& cmds, SDL_Renderer* renderer, enum nk_anti_aliasing AA, nk_draw_null_texture& null_texture) {
-	SDL_Rect saved_clip;
-#ifdef NK_SDL_CLAMP_CLIP_RECT
-	SDL_Rect viewport;
-#endif
-	SDL_bool clipping_enabled;
-	int vs = sizeof(vertex_s);
-	size_t vp = offsetof(vertex_s, pos);
-	size_t vt = offsetof(vertex_s, uv);
-	size_t vc = offsetof(vertex_s, color);
+void gui_sdl2_render::poll_input(double time) {
+	SDL_Event e;
+	nk_glyph glyph;
+	int x, y;
+	bool down;
 
-	/* convert from command queue into draw list and draw to screen */
-	const struct nk_draw_command* cmd;
-	const nk_draw_index* offset = NULL;
-	struct nk_buffer vbuf, ebuf;
+	nk_input_begin(this);
+	
+	while (SDL_PollEvent(&e)) {
+		if (input.mouse.grab) {
+			SDL_SetRelativeMouseMode(SDL_TRUE);
 
-	/* fill converting configuration */
-	struct nk_convert_config config;
-	static const struct nk_draw_vertex_layout_element vertex_layout[] = {
-		{NK_VERTEX_POSITION, NK_FORMAT_FLOAT, NK_OFFSETOF(vertex_s, pos)},
-		{NK_VERTEX_TEXCOORD, NK_FORMAT_FLOAT, NK_OFFSETOF(vertex_s, uv)},
-		{NK_VERTEX_COLOR, NK_FORMAT_R8G8B8A8, NK_OFFSETOF(vertex_s, color)},
-		{NK_VERTEX_LAYOUT_END}
-	};
-	NK_MEMSET(&config, 0, sizeof(config));
-	config.vertex_layout = vertex_layout;
-	config.vertex_size = sizeof(vertex_s);
-	config.vertex_alignment = NK_ALIGNOF(vertex_s);
-	config.null = null_texture;
-	config.circle_segment_count = 22;
-	config.curve_segment_count = 22;
-	config.arc_segment_count = 22;
-	config.global_alpha = 1.0f;
-	config.shape_AA = AA;
-	config.line_AA = AA;
+			input.mouse.grab = 0;
+		}
+		else if (input.mouse.ungrab) {
+			SDL_SetRelativeMouseMode(SDL_FALSE);
+			SDL_WarpMouseInWindow(window, input.mouse.prev.x, input.mouse.prev.y);
 
-	/* convert shapes into vertexes */
-	nk_buffer_init_default(&vbuf);
-	nk_buffer_init_default(&ebuf);
-	nk_convert(&ctx, &cmds, &vbuf, &ebuf, &config);
-
-	/* iterate over and execute each draw command */
-	offset = (const nk_draw_index*)nk_buffer_memory_const(&ebuf);
-
-	clipping_enabled = SDL_RenderIsClipEnabled(renderer);
-	SDL_RenderGetClipRect(renderer, &saved_clip);
-#ifdef NK_SDL_CLAMP_CLIP_RECT
-	SDL_RenderGetViewport(sdl.renderer, &viewport);
-#endif
-
-	nk_draw_foreach(cmd, &ctx, &cmds)
-	{
-		if (!cmd->elem_count) continue;
-
-		{
-			SDL_Rect r;
-			r.x = cmd->clip_rect.x;
-			r.y = cmd->clip_rect.y;
-			r.w = cmd->clip_rect.w;
-			r.h = cmd->clip_rect.h;
-#ifdef NK_SDL_CLAMP_CLIP_RECT
-			if (r.x < 0) {
-				r.w += r.x;
-				r.x = 0;
-			}
-			if (r.y < 0) {
-				r.h += r.y;
-				r.y = 0;
-			}
-			if (r.h > viewport.h) {
-				r.h = viewport.h;
-			}
-			if (r.w > viewport.w) {
-				r.w = viewport.w;
-			}
-#endif
-			SDL_RenderSetClipRect(renderer, &r);
+			input.mouse.ungrab = 0;
 		}
 
-		{
-			const void* vertices = nk_buffer_memory_const(&vbuf);
+		switch (e.type) {
+		case SDL_QUIT:
+			exit(0);
+			break;
 
-			SDL_RenderGeometryRaw(renderer,
-				(SDL_Texture*)cmd->texture.ptr,
-				(const float*)((const nk_byte*)vertices + vp), vs,
-				(const SDL_Color*)((const nk_byte*)vertices + vc), vs,
-				(const float*)((const nk_byte*)vertices + vt), vs,
-				(vbuf.needed / vs),
-				(void*)offset, cmd->elem_count, 2);
+		case SDL_KEYDOWN:
+		case SDL_KEYUP:
+			break;
 
-			offset += cmd->elem_count;
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+			down = (e.type == SDL_MOUSEBUTTONDOWN);
+			x = e.button.x;
+			y = e.button.y;
+
+			switch (e.button.button) {
+			case SDL_BUTTON_LEFT:
+				if (e.button.clicks > 1) {
+					nk_input_button(this, NK_BUTTON_DOUBLE, x, y, down);
+				}
+				
+				nk_input_button(this, NK_BUTTON_LEFT, x, y, down);
+				
+				break;
+
+			case SDL_BUTTON_MIDDLE:
+				nk_input_button(this, NK_BUTTON_MIDDLE, x, y, down);
+				break;
+
+			case SDL_BUTTON_RIGHT:
+				nk_input_button(this, NK_BUTTON_RIGHT, x, y, down);
+				break;
+			}
+			
+			break;
+
+		case SDL_MOUSEMOTION:
+			if (input.mouse.grabbed) {
+				x = input.mouse.prev.x;
+				y = input.mouse.prev.y;
+
+				nk_input_motion(this, x + e.motion.xrel, y + e.motion.yrel);
+			}
+			else {
+				nk_input_motion(this, e.motion.x, e.motion.y);
+			}
+			break;
+
+		case SDL_MOUSEWHEEL:
+			nk_input_scroll(this, nk_vec2((float) e.wheel.x, (float) e.wheel.y));
+			break;
+
+		case SDL_TEXTINPUT:
+			memcpy(glyph, e.text.text, NK_UTF_SIZE);
+
+			nk_input_glyph(this, glyph);
+			break;
+
+		default:
+			break;
 		}
 	}
 
-	SDL_RenderSetClipRect(renderer, &saved_clip);
-	if (!clipping_enabled) {
-		SDL_RenderSetClipRect(renderer, NULL);
-	}
-
-	nk_clear(&ctx);
-	nk_buffer_clear(&cmds);
-	nk_buffer_free(&vbuf);
-	nk_buffer_free(&ebuf);
+	nk_input_end(this);
 }
 
 void gui_sdl2_render::render(bool antialias) {
 	nk_anti_aliasing aa;
 	nk_buffer vbuf, ebuf;
+	nk_convert_config config;
 	const nk_draw_command* cmd = NULL;
 	const nk_draw_index* offset = NULL;
 	SDL_Rect clip, saved_clip;
@@ -235,9 +223,16 @@ void gui_sdl2_render::render(bool antialias) {
 
 	aa = antialias ? NK_ANTI_ALIASING_ON : NK_ANTI_ALIASING_OFF;
 
-	nk_sdl_render(*this, commands, renderer, aa, null_texture);
+	{
+		std::memset(&config, 0, sizeof(config));
 
-	/*{
+		config.vertex_layout = vertex_layout;
+		config.vertex_size = sizeof(vertex_s);
+		config.vertex_alignment = alignof(vertex_s);
+		config.circle_segment_count = 22;
+		config.curve_segment_count = 22;
+		config.arc_segment_count = 22;
+		config.global_alpha = 1.0f;
 		config.shape_AA = aa;
 		config.line_AA = aa;
 
@@ -254,13 +249,15 @@ void gui_sdl2_render::render(bool antialias) {
 		offset = (const nk_draw_index*) nk_buffer_memory_const(&ebuf);
 	}
 
-	clipping_enabled = SDL_RenderIsClipEnabled(renderer);
+	{
+		clipping_enabled = SDL_RenderIsClipEnabled(renderer);
 
-	SDL_RenderGetClipRect(renderer, &saved_clip);
+		SDL_RenderGetClipRect(renderer, &saved_clip);
 
 #ifdef NK_SDL_CLAMP_CLIP_RECT
-	SDL_RenderGetViewport(renderer, &port);
+		SDL_RenderGetViewport(renderer, &port);
 #endif
+	}
 
 	nk_draw_foreach(cmd, this, &commands) {
 		if (!cmd->elem_count) {
@@ -312,7 +309,7 @@ void gui_sdl2_render::render(bool antialias) {
 	nk_clear(this);
 	nk_buffer_clear(&commands);
 	nk_buffer_free(&vbuf);
-	nk_buffer_free(&ebuf);*/
+	nk_buffer_free(&ebuf);
 }
 
 #endif

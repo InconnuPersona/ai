@@ -1,7 +1,11 @@
 #include "gfx/gui.h"
 #include "main.h"
 
-/*#include <sys/poll.h>
+#ifdef _WIN32
+ //#include <winsock2.h>
+#else
+ #include <sys/poll.h>
+#endif
 
 #ifndef STDIN_FILENO
  #define STDIN_FILENO _fileno(stdin)
@@ -9,7 +13,7 @@
 
 #define STDIN_PROMPT "> "
 
-// For right now, implement everything by hand.*/
+// For right now, implement everything by hand.
 
 map::map_s world;
 double game_speed = 2.0;
@@ -70,11 +74,15 @@ void quit() {
 
 #undef main
 
+#include "gfx/calculator.h"
+#include "gfx/canvas.h"
+//#include "gfx/overview.h"
+#include "gfx/node_editor.h"
+
+struct nk_colorf bg = { 0.1, 0.18, 0.24, 1 };
+
 void test_gui() {
     nk_context* ctx = gfx::gui;
-    struct nk_colorf bg;
-
-    bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 
     if (nk_begin(ctx, "Demo", nk_rect(50, 50, 230, 250),
         NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE |
@@ -140,6 +148,8 @@ int main(int argc, char** argv) {
  if (use_gui) {
   gfx::init_gui("sdl2render", { 640, 480, 60 });
   
+  // Set callbacks.
+
   // Load fonts.
   //gfx::gui_font_s font;
 
@@ -179,7 +189,7 @@ int main(int argc, char** argv) {
   //}
   
   if (use_gui && gfx::gui) {
-   //gfx::gui->input(watch.time());
+   gfx::gui->poll_input(watch.time());
   }
   
   /*if (!game_speed) {
@@ -205,11 +215,16 @@ int main(int argc, char** argv) {
   
   // -------------------------------------------------------
   
-  test_gui();
-
   if (use_gui && gfx::gui) {
    gfx::draw->clear({ 0, 0, 0 });
    
+   test_gui();
+   
+   calculator(gfx::gui);
+   canvas(gfx::gui);
+   //overview(gfx::gui);
+   node_editor(gfx::gui);
+
    //map->render();
    gfx::gui->render(true);
 

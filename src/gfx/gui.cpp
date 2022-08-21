@@ -28,20 +28,8 @@ gui_font_s::gui_font_s(float size) : size(size) {
 	handle = NULL;
 }
 
-gui_i::gui_i(gui_e type) : type(type) {
+gui_i::gui_i(gui_e type) : type(type), font_scale(1.f) {
 	
-	NK_MEMSET(&config, 0, sizeof(config));
-
-	config.vertex_layout = vertex_layout;
-	config.vertex_size = sizeof(vertex_s);
-	config.null = null_texture;
-	config.circle_segment_count = 22;
-	config.curve_segment_count = 22;
-	config.arc_segment_count = 22;
-	config.global_alpha = 1.0f;
-	
-	font_scale = 1.f;
-
 	//gui_ifaces.push_back(this);
 }
 

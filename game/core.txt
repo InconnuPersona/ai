@@ -27,3 +27,7 @@ pops = {
  SPECIES_HYBRID_GENE_MOD_LEVEL = 2,
 }
 
+units = {
+ 
+}
+

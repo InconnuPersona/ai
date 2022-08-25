@@ -3,7 +3,7 @@
 #include "eco/eco.h"
 
 namespace map {
-	enum node_e {
+	enum node_e : int {
 		NODE_NONE = 0,
 		NODE_STAR = 1,
 		NODE_LAND = 2, // Planet, layers of planet, binary planets, or moons.

@@ -15,27 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="proc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="governments.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="actions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ideas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="effects.h">
+    <ClInclude Include="country.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

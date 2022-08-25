@@ -221,12 +221,12 @@ overview(struct nk_context *ctx)
                 option = nk_option_label(ctx, "optionC", option == C) ? C : option;
 
                 nk_layout_row(ctx, NK_STATIC, 30, 2, ratio);
-                nk_labelf(ctx, NK_TEXT_LEFT, "Slider int");
+                nk_label(ctx, "Slider int", NK_TEXT_LEFT);
                 nk_slider_int(ctx, 0, &int_slider, 10, 1);
 
                 nk_label(ctx, "Slider float", NK_TEXT_LEFT);
                 nk_slider_float(ctx, 0, &float_slider, 5.0, 0.5f);
-                nk_labelf(ctx, NK_TEXT_LEFT, "Progressbar: %u" , (int)prog_value);
+                nk_label(ctx, std::string("Progressbar: " + std::to_string(prog_value)).c_str(), NK_TEXT_LEFT);
                 nk_progress(ctx, &prog_value, 100, NK_MODIFIABLE);
 
                 nk_layout_row(ctx, NK_STATIC, 25, 2, ratio);
@@ -641,10 +641,10 @@ overview(struct nk_context *ctx)
             }
 
             if (index != -1)
-                nk_tooltipf(ctx, "Value: %.2f", (float)cos((float)index*step));
+                nk_tooltip(ctx, std::string("Value: " + std::to_string(cos(step * index))).c_str());
             if (line_index != -1) {
                 nk_layout_row_dynamic(ctx, 20, 1);
-                nk_labelf(ctx, NK_TEXT_LEFT, "Selected value: %.2f", (float)cos((float)index*step));
+                nk_label(ctx, std::string("Selected value: " + std::to_string(cos(step * index))).c_str(), NK_TEXT_LEFT);
             }
 
             /* column chart */
@@ -661,10 +661,10 @@ overview(struct nk_context *ctx)
                 nk_chart_end(ctx);
             }
             if (index != -1)
-                nk_tooltipf(ctx, "Value: %.2f", (float)fabs(sin(step * (float)index)));
+                nk_tooltip(ctx, ("Value: " + std::to_string(fabs(sin(step * (float)index)))).c_str());
             if (col_index != -1) {
                 nk_layout_row_dynamic(ctx, 20, 1);
-                nk_labelf(ctx, NK_TEXT_LEFT, "Selected value: %.2f", (float)fabs(sin(step * (float)col_index)));
+                nk_label(ctx, ("Selected value: " + std::to_string(fabs(sin(step * (float)col_index)))).c_str(), NK_TEXT_LEFT);
             }
 
             /* mixed chart */
@@ -1025,7 +1025,7 @@ overview(struct nk_context *ctx)
                     nk_layout_row_static(ctx, 18, 150, 1);
                     for (i = 0; i < 64; ++i) {
                         sprintf(buffer, "0x%02x", i);
-                        nk_labelf(ctx, NK_TEXT_LEFT, "%s: scrollable region", buffer);
+                        nk_label(ctx, (std::string(buffer) + ": scrollable region").c_str(), NK_TEXT_LEFT);
                     }
                     nk_group_end(ctx);
                 }

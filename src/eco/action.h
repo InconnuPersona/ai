@@ -26,4 +26,8 @@ namespace eco {
 	struct act_mng_s {
 
 	};
+
+	struct effect_s {
+
+	};
 }

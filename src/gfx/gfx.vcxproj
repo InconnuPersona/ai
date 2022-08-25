@@ -33,6 +33,7 @@
     <ClInclude Include="nuklear_main.h" />
     <ClInclude Include="overview.h" />
     <ClInclude Include="style.h" />
+    <ClInclude Include="test_gui.h" />
     <ClInclude Include="view.h" />
     <ClInclude Include="view_sdl2.h" />
   </ItemGroup>

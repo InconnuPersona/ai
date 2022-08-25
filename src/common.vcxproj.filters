@@ -24,6 +24,7 @@
     <ClCompile Include="thread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types.h">
@@ -51,9 +52,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="log.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="udp.h">

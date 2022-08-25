@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actions.h" />
+    <ClInclude Include="effects.h" />
     <ClInclude Include="governments.h" />
     <ClInclude Include="ideas.h" />
     <ClInclude Include="main.h" />

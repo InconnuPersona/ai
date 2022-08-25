@@ -2,6 +2,7 @@
 
 //#include "map/node.h"
 
+#include "action.h"
 #include "good.h"
 #include "idea.h"
 #include "org.h"

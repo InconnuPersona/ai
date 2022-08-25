@@ -118,6 +118,8 @@ int main(int argc, char** argv) {
   // Load cursors.
 
   // UI customization.
+
+  //load_gui_defs();
  }
  
  // Load core game data.

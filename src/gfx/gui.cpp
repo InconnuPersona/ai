@@ -33,6 +33,9 @@ gui_i::gui_i(gui_e type) : type(type), font_scale(1.f) {
 	//gui_ifaces.push_back(this);
 }
 
+gui_i::~gui_i() {
+}
+
 /*void gui_i::init(view_mode_s& mode) {
 	// Close view and draw APIs.
 	//draw.close();

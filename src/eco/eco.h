@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "map/node.h"
-
 #include "action.h"
 #include "good.h"
 #include "idea.h"
@@ -29,7 +27,7 @@ namespace eco {
 	};
 
 	struct labor_s {
-		//pop_s::id_t pop;
+		pop_s::id_t pop;
 		long_t count;
 	};
 
@@ -42,6 +40,9 @@ namespace eco {
 		ent_s::id_t ruler;
 
 		pop_stat_s stats;
+
+		// How centralized the eco is, and how much it can be influenced by foreign entities.
+		float centralism;
 
 		//tuplemap_t<labor_s, hold_s::id_t> assigned_labor;
 

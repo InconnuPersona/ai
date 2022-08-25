@@ -29,6 +29,12 @@ namespace gfx {
 		gui_font_s(float size);
 	};
 
+	struct gui_i;
+
+	struct gui_window_i {
+		virtual void update(gui_i* gui) = 0;
+	};
+
 	struct gui_i : public nk_context {
 		typedef void (*quit_f)(gui_i* gui);
 
@@ -40,6 +46,7 @@ namespace gfx {
 		gui_e type;
 
 		vector_t<view_mode_s> view_modes;
+		vector_t<gui_window_i*> windows;
 
 		nk_buffer commands;
 		float font_scale;
@@ -53,6 +60,7 @@ namespace gfx {
 		
 	public:
 		gui_i(gui_e type);
+		virtual ~gui_i();
 
 		virtual void init(view_mode_s& mode) = 0;
 		virtual void close() = 0;
@@ -60,13 +68,11 @@ namespace gfx {
 
 		virtual gui_font_s* load_font(cstring_t& path, float size, struct nk_font_config& config);
 
+		void add_window(gui_window_i* window);
 		void set_font(gui_font_s* font);
 
 		virtual void poll_input(double time) = 0;
 
-		//void click();
-		//void drag();
-		//void scroll();
 
 	protected:
 		void finish(view_i* view, draw_i* draw);

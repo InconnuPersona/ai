@@ -20,13 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="land.h" />
-    <ClInclude Include="map.h" />
+    <ClInclude Include="world.h" />
     <ClInclude Include="node.h" />
     <ClInclude Include="prov.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="land.cpp" />
-    <ClCompile Include="map.cpp" />
+    <ClCompile Include="world.cpp" />
     <ClCompile Include="node.cpp" />
   </ItemGroup>
   <ItemGroup>

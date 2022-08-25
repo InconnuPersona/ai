@@ -1,8 +1,8 @@
-#include "map.h"
+#include "world.h"
 
 using namespace map;
 
-map_s map::welt;
+map_s map::world;
 
 void map_s::init() {
 

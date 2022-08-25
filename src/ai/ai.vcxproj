@@ -153,6 +153,9 @@
     <ClInclude Include="governments.h" />
     <ClInclude Include="ideas.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="main_gui.h" />
+    <ClInclude Include="map.h" />
+    <ClInclude Include="scopes.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gfx\gfx.vcxproj">

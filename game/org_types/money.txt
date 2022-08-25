@@ -1,0 +1,25 @@
+
+# Organization placed in charge of minting coins and issuing 
+# currency to markets.
+treasury = {
+ 
+}
+
+# Lenders are non-state entities.
+lender = {
+ 
+}
+
+investor = {
+ 
+}
+
+# Banks both do lending and investing,
+bank = {
+ can_invest = true
+}
+
+credit_union = {
+ 
+}
+

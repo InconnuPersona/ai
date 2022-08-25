@@ -5,7 +5,7 @@
 
 namespace map {
 
-	enum link_e {
+	/*enum link_e {
 		LINK_ABST = 0, // Abstract link
 
 		LINK_LAND,
@@ -17,23 +17,26 @@ namespace map {
 	enum land_e {
 		LAND_SPHERE,
 		LAND_SQUARE,
-	};
+	};*/
 
 	struct link_s : public comp_s {
-		link_e type;
+		int type;
 
 		node_s::id_t l, r;
 
 		float len;
 	};
 
+	struct land_data_s {
+
+	};
+
 	struct land_s : node_s {
-		const land_e type;
+		//const land_e type;
 
 		vector_t<link_s> links;
 		
-		land_s(land_e type);
-
+		//land_s(land_e type);
 
 
 	};

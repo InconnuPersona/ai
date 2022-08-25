@@ -1,11 +1,11 @@
 #pragma once
 
 #include "land.h"
-#include "image.h"
+#include "gfx/draw.h"
 
 namespace map {
 
-	struct backmap_s {
+	struct map_data_s {
 		int w, h;
 
 		image_s terrain;
@@ -39,7 +39,11 @@ namespace map {
 		void tick_day();
 	};
 
-	extern map_s welt;
+	struct map_gen_s {
+
+	};
+
+	extern map_s world;
 }
 
 // The root node is 0.

@@ -2,6 +2,7 @@
 
 #include "good.h"
 #include "map/node.h"
+#include "simd.h"
 
 namespace eco {
 
@@ -61,7 +62,7 @@ namespace eco {
 
 		map::node_s::id_t loc;
 
-		// Coherence is how likely the pop is to follow the 
+		// Coherence is how likely the pop is to follow the leader of their eco.
 		float coherence;
 
 		// Total count of population.
@@ -89,5 +90,15 @@ namespace eco {
 		// ethnic composition will drift towards the larger
 		// components
 		long_t progeny;
+	};
+
+	
+
+	// 
+	struct pop_vector_s {
+		simd64_u total;
+		simd64_u grown;
+		simd64_u nurse;
+		simd64_u young;
 	};
 }

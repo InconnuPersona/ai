@@ -91,7 +91,6 @@ struct vers_s {
  void print();
 };
 
-extern date_s date;
 extern vers_s version;
 
 void set_nonblock(int file);
@@ -104,3 +103,5 @@ namespace gfx {
 
 namespace map {
 }
+
+#include "log.h"

@@ -2,13 +2,15 @@
 
 #include "eco/action.h"
 
+#define DEFINE_ACT(Name) struct Name##Act : eco::act_i
+
 // Event decision.
-struct Decision : eco::act_i {
+DEFINE_ACT(RulerDecision) {
 	int choice;
 };
 
 // The decision of whether a pop or org will rebel.
-struct Rebel : eco::act_i {
+DEFINE_ACT(Rebel) {
 	enum {
 		REBEL_ECO_CHANGE,
 		REBEL_IDEA_AXIS, // Rebels supporting a specific axis direction.
@@ -17,9 +19,13 @@ struct Rebel : eco::act_i {
 
 	};
 
-
+	//ACT_PREREQ()
 };
 
-struct EthnicSplit : eco::act_i {
+DEFINE_ACT(EthnicSplit) {
 	float ETHNIC_SPLIT_THRESHHOLD = 0.5f;
 };
+
+DEFINE_ACT(ExpandEco) {
+	
+}

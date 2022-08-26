@@ -1,5 +1,6 @@
 tribe = {
  can_hold_state = no
+ type = govern
  
  
 }

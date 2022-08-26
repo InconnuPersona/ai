@@ -30,7 +30,6 @@
     <ClInclude Include="cmd.h" />
     <ClInclude Include="http.h" />
     <ClInclude Include="image.h" />
-    <ClInclude Include="jsmn.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="simd.h" />

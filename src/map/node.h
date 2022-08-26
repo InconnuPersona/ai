@@ -1,18 +1,23 @@
 #pragma once
 
-#include "eco/eco.h"
+#include "base.h"
 
 namespace map {
+	// An abstract class representing
 	struct node_s {
 		const int type;
 
 		HAS_ID(int);
 
+		id_t parent;
+		vector_t<node_s::id_t> neighbors;
+
+		//vector_t<effect_s> active_effects;
+
 		//int col;
 		//vec2 pos, rot;
 		//float text_scale;
 
-		id_t parent;
 
 		//eco::eco_s::id_t eco;
 
@@ -21,4 +26,7 @@ namespace map {
 		//virtual 
 	};
 
+	struct node_mgr_s {
+
+	};
 }

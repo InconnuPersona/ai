@@ -15,6 +15,9 @@ namespace map {
 	struct prov_s : public node_s {
 		eco::eco_s::id_t eco;
 
+		// City location.
+		vec2 center;
+
 		//org_s::id_t owner;
 		//org_s::id_t holder;
 	};

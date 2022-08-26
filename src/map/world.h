@@ -5,29 +5,22 @@
 
 namespace map {
 
-	struct map_data_s {
-		int w, h;
+	// Universal time is counted by the diem, each land has their own 
 
-		image_s terrain;
-		image_s height;
-
-		void gen();
-	};
-
-	struct map_s {
-		date_s date;
-
+	// The map is centered on a single star system.
+	struct star_s : node_s {
 		//vector_t<eco::hold_s> holds;
-		vector_t<node_s> nodes;
-		vector_t<eco::org_s> orgs;
+		//vector_t<eco::org_s> orgs;
 
 		// Modelview matrix.
-		mat4 model;
+		//mat4 model;
 
 		//vector_t<good_s> goods;
 		
 		//vec2 to_view(vec2 pos);
 		//vec2 to_view(float x, float y);
+
+
 
 		// Load game files.
 		void init();
@@ -35,15 +28,17 @@ namespace map {
 		// Load save file.
 		void load(cstring_t& path);
 
-		// Do world calculations for a single day.
-		void tick_day();
+		// Do world calculations for a work cycle.
+		void tick();
 	};
 
-	struct map_gen_s {
+	struct map_gen {
 
+
+		void operator()();
 	};
 
-	extern map_s world;
+	extern node_s* world;
 }
 
 // The root node is 0.

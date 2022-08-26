@@ -17,6 +17,7 @@ investor = {
 # Banks both do lending and investing,
 bank = {
  can_invest = true
+ type = 
 }
 
 credit_union = {

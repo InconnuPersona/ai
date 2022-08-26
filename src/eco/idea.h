@@ -8,6 +8,8 @@ namespace eco {
 		HAS_ID(int);
 
 		// Whether ideas on the axis will split a pop into separate
+		
+		// A pop may only adopt one idea from a cardinal axis
 		bool cardinal;
 	};
 	

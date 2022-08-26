@@ -29,10 +29,18 @@ namespace map {
 
 	struct land_data_s {
 
+			int w, h;
+
+			image_s tiles;
+			//image_s terrain;
+			//image_s height;
+
 	};
 
 	struct land_s : node_s {
 		//const land_e type;
+
+		date_s date;
 
 		vector_t<link_s> links;
 		

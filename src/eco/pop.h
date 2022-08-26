@@ -43,10 +43,6 @@ namespace eco {
 
 	};
 
-	struct pop_half_species_s : pop_species_s {
-		pop_species_s::id_t p0, p1;
-	};
-
 	struct pop_spec_s {
 		pop_species_s::id_t species;
 		
@@ -56,49 +52,31 @@ namespace eco {
 	};
 
 	struct pop_s {
-		HAS_ID(short);
+		HAS_ID(int);
 
 		pop_spec_s spec;
 
 		map::node_s::id_t loc;
 
 		// Coherence is how likely the pop is to follow the leader of their eco.
-		float coherence;
-
-		// Total count of population.
-		long_t total;
+		float coh;
 		
-		// Represents members of the population that are adults
-		// free of childcare that may contribute to the labor
-		// of an eco.
-		long_t grown;
-
+		// Belligerance.
+		float mil;
+		
 		// 
-		long_t nurse;
-
-		// Offspring of the pop, contribute very little to 
-		long_t young;
-
-		// Progeny is the potential offspring produced by each
-		// pop per tick that is distributed in their eco. Most
-		// progeny is weighted to fall back into the original
-		// pop to produce offspring, however, other pops that
-		// accept progeny of differing ethnicity will have their
-		// ethnic composition altered by the amount of progeny
-		// received. This in turn reduces coherence, however,
-		// this is a natural part of the game. Over time,
-		// ethnic composition will drift towards the larger
-		// components
-		long_t progeny;
+		
+		
 	};
 
 	
 
 	// 
 	struct pop_vector_s {
-		simd64_u total;
-		simd64_u grown;
-		simd64_u nurse;
-		simd64_u young;
+		//simd64_u total;
+		//simd64_u elder;
+		//simd64_u grown;
+		//simd64_u nurse;
+		//simd64_u young;
 	};
 }

@@ -8,10 +8,10 @@ void make_sphere() {
 
 }
 
-land_s::land_s(land_e type) : node_s(NODE_LAND), type(type) {
+//land_s::land_s(land_e type) : node_s(NODE_LAND), type(type) {
 
 
-}
+//}
 
 /*void land_gen::push_cartesian(vector_t<double>& out, float lat, float lon) {
 	// Convert from degrees to radians.
